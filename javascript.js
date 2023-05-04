@@ -1,16 +1,22 @@
-
-let playerSelection
-let computerSelection
 let playerScore = 0
 let computerScore = 0
 let winner
 
 function getComputerSelection() {
     let number = Math.floor(Math.random() * 3);
-    return number;
-}
+    if (number === 0) {
+        return 'rock';
+    } else if (number === 1) {
+        return 'paper';
+    } else if (number === 2) {
+        return 'scissors';
+    } else {
+        return 'ERROR';
+    };
+};
 
-function getPlayerSelection() {
+//below useless since UI introduced
+/*function getPlayerSelection() {
     let input = prompt('Rock, paper or scissors?').toLowerCase();
     while (input !== 'rock' && input !== 'paper' && input !== 'scissors') {
         input = prompt('You must pick rock, paper or scissors. Nothing else will be tolerated!');
@@ -23,34 +29,37 @@ function getPlayerSelection() {
         number = 2;
     };
     return number;
-}
+}*/
 
 function playRound(playerSelection, computerSelection) {
-    playerSelection = getPlayerSelection();
-    computerSelection = getComputerSelection();
+    
     if (computerSelection === playerSelection) {
         alert('It\'s a tie!');
         winner = 'none';
-    } else if (playerSelection === 2 && computerSelection === 1) {
+    } else if (playerSelection === 'scissors' && computerSelection === 'paper') {
         alert('You win! Scissors beats paper.');
         winner = 'player';
-    } else if (playerSelection === 1 && computerSelection === 0) {
+    } else if (playerSelection === 'paper' && computerSelection === 'rock') {
         alert('You win! Paper beats rock.');
         winner = 'player';
-    } else if (playerSelection === 0 && computerSelection === 2) {
+    } else if (playerSelection === 'rock' && computerSelection === 'scissors') {
         alert('You win! Rock beats scissors.');
         winner = 'player';
-    } else if (playerSelection === 2 && computerSelection === 0) {
+    } else if (playerSelection === 'scissors' && computerSelection === 'rock') {
         alert('You lose! Rock beats scissors.');
         winner = 'computer';
-    } else if (playerSelection === 1 && computerSelection === 2) {
+    } else if (playerSelection === 'paper' && computerSelection === 'scissors') {
         alert('You lose! Scissors beats paper.');
         winner = 'computer';
-    } else {
+    } else if (playerSelection === 'rock' && computerSelection === 'paper') {
         alert('You lose! Paper beats rock.');
         winner = 'computer';
-    };
-}
+    } else {
+        alert('ERROR');
+        console.log(playerSelection);
+        console.log(computerSelection);
+    }
+};
 
 function game() {
     alert('Welcome to the Rock, paper, scissors game. You will be fighting the computer. The game ends when you or the computer get 5 points.');
@@ -69,4 +78,21 @@ function game() {
    };
 }
 
-game();
+//function declareWinner() {
+
+//};
+
+//game();
+
+//changes to intoduce UI
+let playerSelection
+let computerSelection
+
+const buttons = document.querySelectorAll('button');
+
+buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+        playerSelection = btn.id;
+        computerSelection = getComputerSelection();
+        playRound(playerSelection, computerSelection);
+    })});
