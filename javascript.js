@@ -1,6 +1,4 @@
-let playerScore = 0
-let computerScore = 0
-let winner
+
 
 function getComputerSelection() {
     let number = Math.floor(Math.random() * 3);
@@ -34,67 +32,123 @@ function getComputerSelection() {
 function playRound(playerSelection, computerSelection) {
     
     if (computerSelection === playerSelection) {
-        alert('It\'s a tie!');
+        outcomeMSG.textContent = 'It\'s a tie!';
         winner = 'none';
     } else if (playerSelection === 'scissors' && computerSelection === 'paper') {
-        alert('You win! Scissors beats paper.');
+        outcomeMSG.textContent = 'You win! Scissors beats paper.';
         winner = 'player';
     } else if (playerSelection === 'paper' && computerSelection === 'rock') {
-        alert('You win! Paper beats rock.');
+        outcomeMSG.textContent = 'You win! Paper beats rock.';
         winner = 'player';
     } else if (playerSelection === 'rock' && computerSelection === 'scissors') {
-        alert('You win! Rock beats scissors.');
+        outcomeMSG.textContent = 'You win! Rock beats scissors.';
         winner = 'player';
     } else if (playerSelection === 'scissors' && computerSelection === 'rock') {
-        alert('You lose! Rock beats scissors.');
+        outcomeMSG.textContent = 'You lose! Rock beats scissors.';
         winner = 'computer';
     } else if (playerSelection === 'paper' && computerSelection === 'scissors') {
-        alert('You lose! Scissors beats paper.');
+        outcomeMSG.textContent = 'You lose! Scissors beats paper.';
         winner = 'computer';
     } else if (playerSelection === 'rock' && computerSelection === 'paper') {
-        alert('You lose! Paper beats rock.');
+        outcomeMSG.textContent = 'You lose! Paper beats rock.';
         winner = 'computer';
     } else {
-        alert('ERROR');
-        console.log(playerSelection);
-        console.log(computerSelection);
+        outcomeMSG.textContent = 'ERROR';
     }
 };
 
-function game() {
-    alert('Welcome to the Rock, paper, scissors game. You will be fighting the computer. The game ends when you or the computer get 5 points.');
-    while (playerScore < 5 && computerScore < 5) {
-    playRound();
-    if (winner === 'player') {
-        playerScore++;
-    } else if (winner === 'computer') {
-        computerScore++;
+    function changePlayerIMG() {
+        if (playerSelection === 'rock') {
+            playerIMG.src = '/photos/rock.png';
+        } else if (playerSelection === 'paper') {
+            playerIMG.src = '/photos/paper.png';
+        } else {
+            playerIMG.src = '/photos/scissors2.png';
+        };
+
+        if (computerSelection === 'rock') {
+            computerIMG.src = '/photos/rock.png';
+        } else if (computerSelection === 'paper') {
+            computerIMG.src = '/photos/paper.png';
+        } else {
+            computerIMG.src = '/photos/scissors2.png';
+        };
     }
-   }
-   if (playerScore === 5) {
-       alert('You have won the game to 5. Congratulations!');
-   } else {
-       alert('You have lost the game to 5. Loser...')
-   };
-}
 
-//function declareWinner() {
+    function game() {
+        while (playerScore < 5 && computerScore < 5) {
+        playRound();
+        if (winner === 'player') {
+            playerScore++;
+        } else if (winner === 'computer') {
+            computerScore++;
+        }
+       }
+       if (playerScore === 5) {
+           alert('You have won the game to 5. Congratulations!');
+       } else {
+           alert('You have lost the game to 5. Loser...')
+       };
+    }
 
-//};
+    function addScore() {
+        if (winner === 'player') {
+            playerScore++;
+        } else if (winner === 'computer') {
+            computerScore++;
+        };
+    };
 
-//game();
+    function checkWinner() {
+        if (playerScore === 5) {
+            outcomeMSG.textContent = 'You have won the game to 5. Congratulations!';
+            bottomText.appendChild(resetButton);
+        } else if (computerScore === 5) {
+            outcomeMSG.textContent = 'You have lost the game to 5. Loser...';
+            bottomText.appendChild(resetButton);
+        };
+    };
+
+    function changeScore() {
+        playerScoreView.textContent = playerScore;
+        computerScoreView.textContent = computerScore;
+    };
 
 //changes to intoduce UI
+let playerScore = 0
+let computerScore = 0
+let winner
 let playerSelection
 let computerSelection
-const buttons = document.querySelectorAll('button');
+const buttons = document.querySelectorAll('button:not(.resetbutton)');
 const playerIMG = document.querySelector('#playerSelectionIMG');
 const computerIMG = document.querySelector('#computerSelectionIMG');
 const outcomeMSG = document.querySelector('.outcome');
+const playerScoreView = document.querySelector('.playerScore');
+const computerScoreView = document.querySelector('.computerScore');
+const resetButton = document.createElement('button');
+const bottomText = document.querySelector('.bottomText');
+
+resetButton.textContent = 'Go again?';
+resetButton.setAttribute('class', 'resetButton');
 
 buttons.forEach(btn => {
     btn.addEventListener('click', () => {
+    if (playerScore < 5 && computerScore < 5) {
         playerSelection = btn.id;
         computerSelection = getComputerSelection();
         playRound(playerSelection, computerSelection);
-    })});
+        changePlayerIMG();
+        addScore();
+        changeScore();
+        checkWinner();
+    }})});
+
+    resetButton.addEventListener('click', () => {
+        playerScore = 0;
+        computerScore = 0;
+        changeScore();
+        computerIMG.src = '';
+        playerIMG.src = '';
+        outcomeMSG.textContent = "Let's see if you can win... this time.";
+    });

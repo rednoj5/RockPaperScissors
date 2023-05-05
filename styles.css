@@ -35,10 +35,10 @@ main {
 .buttons {
     display: flex;
     justify-content: space-evenly;
-    padding: 100px;
+    padding: 80px;
 }
 
-button {
+button:not(.resetButton) {
     border: 0;
     border-radius: 50px;
     width: 200px;
@@ -50,11 +50,11 @@ button {
     background-color: white;
 }
 
-button:hover .overlay {
+button:hover .overlay:not(.resetButton) {
     opacity: 1;
 }
 
-button:active {
+button:active:not(.resetButton) {
     box-shadow: 0 5px rgb(179, 7, 7);
     transform: translateY(4px);
 }
@@ -116,10 +116,63 @@ footer {
 .static {
     color: white;
     padding-bottom: 5px;
+    font-size: 18px;
 }
 
 .outcome {
     color: white;
     font-size: 24px;
     font-weight: 700;
+    padding: ;
+}
+
+.boardBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.score {
+    color: white;
+    margin: 10px 0 0 0;
+    padding: 0;
+    font-size: 18px;
+    justify-content: center;
+}
+
+.playerScore, .computerScore {
+    color: white;
+    padding: 10px 5px 0 0;
+    font-size: 26px;
+    font-weight: 700;
+}
+
+.bottomText {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    align-items: center;
+}
+
+.resetButton {
+    padding: 10px;
+    background-color: black;
+    color: red;
+    font-size: 18px;
+    font-weight: 700;
+    border: 3px solid red;
+    cursor: pointer;
+    box-shadow: 0 5px 0 2px rgb(179, 7, 7);
+    
+}
+
+.resetButton:hover {
+    background-color: red;
+    color: black;
+}
+
+.resetButton:active {
+    box-shadow: 0 2px 0 1.5px rgb(179, 7, 7);
+    transform: translateY(3px);
 }
