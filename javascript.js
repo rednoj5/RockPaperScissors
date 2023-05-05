@@ -59,23 +59,23 @@ function playRound(playerSelection, computerSelection) {
 
     function changePlayerIMG() {
         if (playerSelection === 'rock') {
-            playerIMG.src = '/photos/rock.png';
+            playerIMG.src = 'photos/rock.png';
         } else if (playerSelection === 'paper') {
-            playerIMG.src = '/photos/paper.png';
+            playerIMG.src = 'photos/paper.png';
         } else {
-            playerIMG.src = '/photos/scissors2.png';
+            playerIMG.src = 'photos/scissors2.png';
         };
 
         if (computerSelection === 'rock') {
-            computerIMG.src = '/photos/rock.png';
+            computerIMG.src = 'photos/rock.png';
         } else if (computerSelection === 'paper') {
-            computerIMG.src = '/photos/paper.png';
+            computerIMG.src = 'photos/paper.png';
         } else {
-            computerIMG.src = '/photos/scissors2.png';
+            computerIMG.src = 'photos/scissors2.png';
         };
     }
 
-    function game() {
+    /*function game() {
         while (playerScore < 5 && computerScore < 5) {
         playRound();
         if (winner === 'player') {
@@ -89,7 +89,7 @@ function playRound(playerSelection, computerSelection) {
        } else {
            alert('You have lost the game to 5. Loser...')
        };
-    }
+    }*/
 
     function addScore() {
         if (winner === 'player') {
@@ -151,4 +151,5 @@ buttons.forEach(btn => {
         computerIMG.src = '';
         playerIMG.src = '';
         outcomeMSG.textContent = "Let's see if you can win... this time.";
+        bottomText.removeChild(resetButton);
     });
