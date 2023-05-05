@@ -1,3 +1,125 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    min-height: 100%;
+}
+
+body {
+    background-color: rgb(94, 94, 94);
+    font-family: 'Courier New', Courier, monospace;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    background-color: red;
+    padding: 30px;
+}
+
 h1 {
     text-align: center;
+    color: rgb(44, 43, 43);
+    font-weight: 700;
+    font-size: 50px;
+}
+
+main {
+    
+    text-align: center;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 100px;
+}
+
+button {
+    border: 0;
+    border-radius: 50px;
+    width: 200px;
+    height: 210px;
+    cursor: pointer;
+    box-shadow: 0 9px rgb(179, 7, 7);
+    position: relative;
+    border: 5px solid red;
+    background-color: white;
+}
+
+button:hover .overlay {
+    opacity: 1;
+}
+
+button:active {
+    box-shadow: 0 5px rgb(179, 7, 7);
+    transform: translateY(4px);
+}
+
+img {
+    display: block;
+    height: auto;
+    width: 100%;
+    border-radius: 50px;
+}
+
+.overlay {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    color: #000000;
+    transition: .6s ease;
+    opacity:0;
+    color: rgb(0, 0, 0);
+    font-size: 20px;
+    text-align: center;
+}  
+
+.description {
+    padding: 20px 0 0 0;
+    font-weight: 700;
+    font-size: 30px;
+    color: white;
+}
+
+.board {
+    display: flex;
+    justify-content: center;
+    gap: 100px;
+    padding: 50px 0 0 0;
+    margin: 0;
+}
+
+.dynamicIMG {
+    width: 150px;
+    height: 150px;
+    background-color: red;
+    border: 5px solid red;
+    display: block;
+    color: red;
+}
+
+footer {
+    background-color: red;
+    text-align: center;
+    padding: 10px;
+    font-size: 18px;
+    font-weight: 500;
+    bottom: 0;
+    position: fixed;
+    width: 100%;
+}
+
+.static {
+    color: white;
+    padding-bottom: 5px;
+}
+
+.outcome {
+    color: white;
+    font-size: 24px;
+    font-weight: 700;
 }

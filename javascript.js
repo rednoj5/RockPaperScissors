@@ -87,8 +87,10 @@ function game() {
 //changes to intoduce UI
 let playerSelection
 let computerSelection
-
 const buttons = document.querySelectorAll('button');
+const playerIMG = document.querySelector('#playerSelectionIMG');
+const computerIMG = document.querySelector('#computerSelectionIMG');
+const outcomeMSG = document.querySelector('.outcome');
 
 buttons.forEach(btn => {
     btn.addEventListener('click', () => {
