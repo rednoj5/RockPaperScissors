@@ -148,8 +148,8 @@ buttons.forEach(btn => {
         playerScore = 0;
         computerScore = 0;
         changeScore();
-        computerIMG.src = '';
-        playerIMG.src = '';
+        computerIMG.src = 'photos/qmark.jpg';
+        playerIMG.src = 'photos/qmark.jpg';
         outcomeMSG.textContent = "Let's see if you can win... this time.";
         bottomText.removeChild(resetButton);
     });

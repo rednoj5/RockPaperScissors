@@ -35,7 +35,7 @@ main {
 .buttons {
     display: flex;
     justify-content: space-evenly;
-    padding: 80px;
+    padding: 60px;
 }
 
 button:not(.resetButton) {
@@ -128,7 +128,6 @@ footer {
     font-size: 24px;
     font-weight: 700;
     padding: 0;
-    margin-bottom: 40px;
 }
 
 .boardBox {
@@ -169,7 +168,7 @@ footer {
     border: 3px solid red;
     cursor: pointer;
     box-shadow: 0 5px 0 2px rgb(179, 7, 7);
-    
+    margin: 0;
 }
 
 .resetButton:hover {
